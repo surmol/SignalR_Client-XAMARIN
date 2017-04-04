@@ -35,14 +35,53 @@ namespace Microsoft.AspNet.SignalR.Client.Samples
                 throw;
             }
         }
+        public enum DangerLevel
+        {
+            Undefined = -1,
+            Normal = 0,
+            Acceptable = 1,
+            Suspicious = 2,
+            Warning = 3,
+            Danger = 4,
+            Alarm = 5
+        }
+        public enum Pose
+        {
+            Multiple = -2,
+            NotProcessed = -1,
+            Unknown = 0,
+            Moving = 1,
+            Lying = 2,
+            LyingArmToRight = 3,
+            LyingArmToLeft = 4,
+            SittingLegsOnBed = 5,
+            SittingLegsDownToRight = 6,
+            SittingLegsDownToLeft = 7,
+            StandingToRight = 8,
+            StandingToLeft = 9,
+            SuspiciousToRight = 10,
+            SuspiciousToLeft = 11
+        }
 
+        public static class Camera
+        {
+            public static long cameraId { get; set; }
+            public static Pose pose { get; set; }
+            public static DangerLevel dangerLevel { get; set; }
+            public static DateTime timestamp { get; set; }
+
+            static Camera()
+            {
+
+            }
+        }
         private async Task RunHubConnectionAPI(string url)
         {
             var hubConnection = new HubConnection(url);
             hubConnection.TraceWriter = _traceWriter;
 
-            var hubProxy = hubConnection.CreateHubProxy("HubConnectionAPI");
-            hubProxy.On<string>("displayMessage", (data) => hubConnection.TraceWriter.WriteLine(data));
+            var hubProxy = hubConnection.CreateHubProxy("FramesHub");
+            hubProxy.On<long, Pose, DangerLevel, DateTime>("broadcastPoseChanged", (cameraId, pose, dangerLevel, timestamp) => hubConnection.TraceWriter.WriteLine(timestamp));
 
             await hubConnection.Start();
             hubConnection.TraceWriter.WriteLine("transport.Name={0}", hubConnection.Transport.Name);

@@ -1,0 +1,2 @@
+android.app.Application
+SignalR_Client.SignalR_Client

@@ -22,32 +22,71 @@ namespace SignalR_Client
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+            start();
+            //GetInfo getInfo = new GetInfo();
+            //getInfo.OnGetInfoComplete += GetInfo_OnGetInfoComplete;
+            //getInfo.Show(FragmentManager, "GetInfo");
+        }
+        public enum DangerLevel
+        {
+            Undefined = -1,
+            Normal = 0,
+            Acceptable = 1,
+            Suspicious = 2,
+            Warning = 3,
+            Danger = 4,
+            Alarm = 5
+        }
+        public enum Pose
+        {
+            Multiple = -2,
+            NotProcessed = -1,
+            Unknown = 0,
+            Moving = 1,
+            Lying = 2,
+            LyingArmToRight = 3,
+            LyingArmToLeft = 4,
+            SittingLegsOnBed = 5,
+            SittingLegsDownToRight = 6,
+            SittingLegsDownToLeft = 7,
+            StandingToRight = 8,
+            StandingToLeft = 9,
+            SuspiciousToRight = 10,
+            SuspiciousToLeft = 11
+        }
+        public static class Camera
+        {
+            public static long cameraId { get; set; }
+            public static Pose pose { get; set; }
+            public static DangerLevel dangerLevel { get; set; }
+            public static DateTime timestamp { get; set; }
 
-            GetInfo getInfo = new GetInfo();
-            getInfo.OnGetInfoComplete += GetInfo_OnGetInfoComplete;
-            getInfo.Show(FragmentManager, "GetInfo");    
+            static Camera()
+            {
+
+            }
         }
 
-        private async void GetInfo_OnGetInfoComplete(object sender, GetInfo.OnGetInfoCompletEventArgs e)
+
+        private async void start()
         {
-            UserName = e.TxtName;
-            BackgroundColor = e.BackgroundColor;
+       
 
-            var hubConnection = new HubConnection("http://cforbeginners.com:901");
-            var chatHubProxy = hubConnection.CreateHubProxy("ChatHub");
+            var hubConnection = new HubConnection("http://192.168.1.63:8089/signalr");
+            var chatHubProxy = hubConnection.CreateHubProxy("FramesHub");
 
-            chatHubProxy.On<string, int, string>("UpdateChatMessage", (message, color, user) =>
+            chatHubProxy.On<long, Pose, DangerLevel, DateTime>("broadcastPoseChanged", (cameraId, pose, dangerLevel, timestamp) =>
             {
                 //UpdateChatMessage has been called from server
-
+                
                 RunOnUiThread(() =>
                 {
                     TextView txt = new TextView(this);
-                    txt.Text = user + ": " + message;
+                    txt.Text = "Camera id:" + cameraId+ " Pose:" + " Danger Level:"+ dangerLevel + " Time:" + timestamp;
                     txt.SetTextSize(Android.Util.ComplexUnitType.Sp, 20);
                     txt.SetPadding(10, 10, 10, 10);
 
-                    switch (color)
+                    switch (Convert.ToInt32(dangerLevel))
                     {
                         case 1:
                             txt.SetTextColor(Color.Red);
@@ -91,12 +130,12 @@ namespace SignalR_Client
                 Console.WriteLine(ex.ToString());
             }
 
-            FindViewById<Button>(Resource.Id.btnSend).Click += async (o, e2) =>
-            {
-                var message = FindViewById<EditText>(Resource.Id.txtChat).Text;
+            //FindViewById<Button>(Resource.Id.btnSend).Click += async (o, e2) =>
+            //{
+            //    var message = FindViewById<EditText>(Resource.Id.txtChat).Text;
 
-                await chatHubProxy.Invoke("SendMessage", new object[] { message, BackgroundColor, UserName });
-            };
+            //    await chatHubProxy.Invoke("SendMessage", new object[] { message, BackgroundColor, UserName });
+            //};
 
         }
     }

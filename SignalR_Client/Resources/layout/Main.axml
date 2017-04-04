@@ -9,29 +9,23 @@
         android:layout_height="match_parent"
         android:background="#E2E2E2"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/llContainer">
+        android:layout_above="@+id/llContainer"
+        android:layout_marginTop="100px">
         <LinearLayout
             android:id="@+id/llChatMessages"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_marginTop="200px" />
     </ScrollView>
     <LinearLayout
         android:id="@id/llContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true">
-        <Button
-            android:id="@+id/btnSend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Send" />
-        <EditText
-            android:id="@+id/txtChat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:textCursorDrawable="@null" />
-    </LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:minWidth="25px"
+        android:minHeight="25px" />
 </RelativeLayout>

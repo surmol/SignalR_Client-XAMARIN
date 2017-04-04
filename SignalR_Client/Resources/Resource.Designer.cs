@@ -47,9 +47,6 @@ namespace SignalR_Client
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
 			
-			// aapt resource value: 0x7f020001
-			public const int monoandroidsplash = 2130837505;
-			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -63,38 +60,32 @@ namespace SignalR_Client
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060005
-			public const int btnOkay = 2131099653;
+			// aapt resource value: 0x7f050005
+			public const int btnOkay = 2131034117;
 			
-			// aapt resource value: 0x7f060009
-			public const int btnSend = 2131099657;
+			// aapt resource value: 0x7f050008
+			public const int llChatMessages = 2131034120;
 			
-			// aapt resource value: 0x7f060008
-			public const int llChatMessages = 2131099656;
+			// aapt resource value: 0x7f050007
+			public const int llContainer = 2131034119;
 			
-			// aapt resource value: 0x7f060007
-			public const int llContainer = 2131099655;
+			// aapt resource value: 0x7f050004
+			public const int radioBlue = 2131034116;
 			
-			// aapt resource value: 0x7f060004
-			public const int radioBlue = 2131099652;
+			// aapt resource value: 0x7f050003
+			public const int radioGreen = 2131034115;
 			
-			// aapt resource value: 0x7f060003
-			public const int radioGreen = 2131099651;
+			// aapt resource value: 0x7f050001
+			public const int radioGroup = 2131034113;
 			
-			// aapt resource value: 0x7f060001
-			public const int radioGroup = 2131099649;
+			// aapt resource value: 0x7f050002
+			public const int radioRed = 2131034114;
 			
-			// aapt resource value: 0x7f060002
-			public const int radioRed = 2131099650;
+			// aapt resource value: 0x7f050006
+			public const int scrollView = 2131034118;
 			
-			// aapt resource value: 0x7f060006
-			public const int scrollView = 2131099654;
-			
-			// aapt resource value: 0x7f06000a
-			public const int txtChat = 2131099658;
-			
-			// aapt resource value: 0x7f060000
-			public const int txtName = 2131099648;
+			// aapt resource value: 0x7f050000
+			public const int txtName = 2131034112;
 			
 			static Id()
 			{
@@ -140,22 +131,6 @@ namespace SignalR_Client
 			}
 			
 			private String()
-			{
-			}
-		}
-		
-		public partial class Style
-		{
-			
-			// aapt resource value: 0x7f050000
-			public const int Mono_Android_Theme_Splash = 2131034112;
-			
-			static Style()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Style()
 			{
 			}
 		}

@@ -13,7 +13,7 @@ namespace Microsoft.AspNet.SignalR.Client.Android.Samples
 	[Activity (Label = "Microsoft.AspNet.SignalR.Client.Android.Samples", MainLauncher = true)]
 	public class MainActivity : Activity
 	{
-		const string SIGNALR_DEMO_SERVER = "http://YOUR-SERVER-INSTANCE-HERE";
+		const string SIGNALR_DEMO_SERVER = "http://192.168.1.68:8089/signalr";
 
 		protected override void OnCreate(Bundle bundle)
 		{
@@ -21,7 +21,7 @@ namespace Microsoft.AspNet.SignalR.Client.Android.Samples
 			SetContentView(Resource.Layout.Main);
 			var textView = FindViewById<TextView>(Resource.Id.textView);
 			
-			if (SIGNALR_DEMO_SERVER == "http://YOUR-SERVER-INSTANCE-HERE") {
+			if (SIGNALR_DEMO_SERVER == "http://192.168.1.68:8089/signalr") {
 				textView.Text = "You need to configure the app to point to your own SignalR Demo service.  Please see the Getting Started Guide for more information!";
 				return;
 			}
