@@ -1,0 +1,8 @@
+SignalR_Client.GetInfo, SignalR_Client;md5cff388c39e18e7558e88db9436f19193.GetInfo
+SignalR_Client.GetInfo, SignalR_Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cff388c39e18e7558e88db9436f19193.GetInfo
+SignalR_Client.GetInfo;md5cff388c39e18e7558e88db9436f19193.GetInfo
+signalr_client.GetInfo;md5cff388c39e18e7558e88db9436f19193.GetInfo
+SignalR_Client.MainActivity, SignalR_Client;md5cff388c39e18e7558e88db9436f19193.MainActivity
+SignalR_Client.MainActivity, SignalR_Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cff388c39e18e7558e88db9436f19193.MainActivity
+SignalR_Client.MainActivity;md5cff388c39e18e7558e88db9436f19193.MainActivity
+signalr_client.MainActivity;md5cff388c39e18e7558e88db9436f19193.MainActivity
